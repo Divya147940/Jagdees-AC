@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin: Add New Work | Jagdeesh Refrigeration</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .login-screen {
+            display: block;
+        }
+        .upload-screen {
+            display: none;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: inherit;
+        }
+        .progress-container {
+            width: 100%;
+            background: #eee;
+            border-radius: 10px;
+            display: none;
+            margin-top: 1rem;
+        }
+        .progress-bar {
+            width: 0%;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body style="background: var(--light);">
+
+    <div class="admin-container">
+        <h1>Add New Work <span>(Admin Only)</span></h1>
+        
+        <!-- Secret ID Login Screen -->
+        <div id="loginScreen" class="login-screen">
+            <p>Enter your <strong>Secret ID</strong> to add new work to the gallery.</p>
+            <input type="password" id="pinInput" placeholder="Enter Secret ID" maxlength="10">
+            <button onclick="checkPin()" class="btn btn-primary">Enter Dashboard</button>
+        </div>
+
+        <!-- Upload Screen -->
+        <div id="uploadScreen" class="upload-screen">
+            <h2>Add New <span>Photo/Video</span></h2>
+            <form id="uploadForm">
+                <input type="file" id="fileInput" accept="image/*,video/*" required>
+                <input type="text" id="captionInput" placeholder="Enter Description (e.g., AC installed at Saket)" required>
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-top: 2rem;">Upload to Website</button>
+            </form>
+            <p id="statusMessage" style="margin-top: 1rem; font-weight: bold;"></p>
+            <hr style="margin: 3rem 0; border: none; border-top: 1px solid #eee;">
+            <h2>Manage <span>Gallery</span></h2>
+            <div id="adminGallery" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                <!-- Gallery management items will load here -->
+            </div>
+            <button onclick="logout()" class="btn btn-secondary" style="margin-top: 4rem;">Logout</button>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work Portfolio | Jagdeesh Refrigeration</title>
+    <meta name="description" content="View our latest AC repair, installation, and appliance service projects across South Delhi. Real photos and videos from our service sites.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gallery-page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #001d3d 100%);
+            color: white;
+            padding: 5.5rem 2rem;
+            text-align: center;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            margin-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-page-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+        .gallery-page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Jagdeesh<span>Refrigeration</span></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="index.html" data-en="Home" data-hi="होम">Home</a></li>
+                <li><a href="services.html" data-en="Services" data-hi="सेवाएं">Services</a></li>
+                <li><a href="contact.html" data-en="Contact" data-hi="संपर्क">Contact</a></li>
+                <li><a href="gallery.html" data-en="Our Work" data-hi="हमारा काम" class="active" style="color: var(--accent); font-weight: 700;">Our Work</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button id="lang-toggle" class="btn-lang">हिन्दी</button>
+            <a href="tel:+916390207943" class="btn btn-primary" data-en="Call Now" data-hi="अभी कॉल करें">Call Now</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="gallery-page-header">
+            <h1 data-en="Our <span>Work Portfolio</span>" data-hi="हमारा <span>काम का पोर्टफोलियो</span>">Our <span>Work Portfolio</span></h1>
+            <p data-en="Real photos and videos from our service sites across Delhi." data-hi="दिल्ली भर में हमारे सर्विस साइट्स की असली तस्वीरें और वीडियो।">Real photos and videos from our service sites across Delhi.</p>
+        </section>
+
+        <section class="container" style="margin-bottom: 10rem;">
+            <div id="dynamicGallery" class="gallery">
+                <div class="loader"></div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 10rem; opacity: 0.15;">
+                <a href="admin.html" style="color: var(--gray); font-size: 0.7rem; text-decoration: none; letter-spacing: 2px; text-transform: uppercase;">Management</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" id="closeLightbox">&times;</span>
+        <div id="lightboxMedia"></div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Jagdeesh Refrigeration</h3>
+                <p data-en="Professional AC Repair & Home Appliance Service in South Delhi." data-hi="साउथ दिल्ली में प्रोफेशनल एसी रिपेयर और होम एप्लायंस सर्विस।">Professional AC Repair & Home Appliance Service in South Delhi.</p>
+                <p><strong>Address:</strong> IGNOU Road, Saidulajab, Sainik Farm, <br>Neb Sarai, New Delhi - 110068</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-en="Quick Links" data-hi="क्विक लिंक्स">Quick Links</h3>
+                <ul style="list-style: none;">
+                    <li><a href="index.html" data-en="Home" data-hi="होम">Home</a></li>
+                    <li><a href="services.html" data-en="Services" data-hi="सेवाएं">Services</a></li>
+                    <li><a href="gallery.html" data-en="Our Work" data-hi="हमारा काम">Our Work</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Jagdeesh Refrigeration. <span data-en="All rights reserved." data-hi="सर्वाधिकार सुरक्षित।">All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

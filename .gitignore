@@ -1,0 +1,6 @@
+node_modules/
+.env
+.gemini/
+uploads/
+package-lock.json
+*.log
