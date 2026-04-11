@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ac-repairing-divya.vercel.app/sitemap.xml

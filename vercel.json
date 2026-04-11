@@ -1,23 +1,19 @@
 {
+  "name": "ac-repairing-divya",
   "version": 2,
   "builds": [
     {
       "src": "server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["**"]
+      }
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "server.js"
-    },
-    {
-      "src": "/uploads/(.*)",
-      "dest": "/uploads/$1"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/server.js"
     }
   ]
 }

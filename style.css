@@ -517,12 +517,37 @@ footer {
 /* MOBILE NAV & SMALLER DEVICES (Up to 768px) */
 @media (max-width: 768px) {
     header {
-        padding: 1rem 5%;
+        padding: 0.8rem 5%;
         justify-content: space-between;
+        gap: 10px;
+    }
+
+    .logo {
+        font-size: 1.15rem;
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .menu-toggle {
         display: flex; /* Show hamburger icon */
+        order: 3;
+        margin-left: 0.5rem;
+    }
+
+    .header-actions {
+        order: 2;
+        gap: 0.5rem;
+    }
+
+    .header-actions .btn-primary {
+        display: none; /* Hide Call Now button in header on mobile to save space */
+    }
+
+    .btn-lang {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
     }
 
     nav {
@@ -556,18 +581,23 @@ footer {
     }
 
     section {
-        padding: 60px 5%;
+        padding: 60px 4%;
     }
 
     .hero {
         flex-direction: column;
         text-align: center;
         height: auto;
-        padding: 80px 5% 50px;
+        padding: 40px 5% 50px;
+        margin-top: 20px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.2rem;
     }
 
     .hero-image {
-        margin-top: 40px;
+        margin-top: 30px;
         order: -1; /* Image first on mobile */
     }
 
@@ -588,11 +618,25 @@ footer {
         flex-direction: column;
         width: 100%;
     }
+    
+    footer h3 {
+        font-size: 1.2rem;
+    }
 }
 
 /* VERY SMALL SCREENS (Up to 480px) */
 @media (max-width: 480px) {
     .logo {
-        font-size: 1.2rem;
+        font-size: 1rem;
+    }
+    header {
+        padding: 0.6rem 4%;
+    }
+    .btn-lang {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+    }
+    .hero-content h1 {
+        font-size: 1.8rem;
     }
 }

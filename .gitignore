@@ -4,3 +4,6 @@ node_modules/
 uploads/
 package-lock.json
 *.log
+
+.vercel
+.env*.local
