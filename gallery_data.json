@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "id": 1,
+    "path": "assets/jagdeesh_workshop_1.png",
+    "type": "image",
+    "caption": "Jagdeesh at South Delhi Workshop",
+    "timestamp": "2026-06-16T12:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "path": "assets/jagdeesh_workshop_2.jpg",
+    "type": "image",
+    "caption": "AC Outdoor Units Serviced and Ready",
+    "timestamp": "2026-06-16T12:01:00.000Z"
+  },
+  {
+    "id": 3,
+    "path": "assets/ac_work.png",
+    "type": "image",
+    "caption": "Split AC Installation in Neb Sarai",
+    "timestamp": "2026-06-16T12:02:00.000Z"
+  },
+  {
+    "id": 4,
+    "path": "assets/tech_selfie.jpg",
+    "type": "image",
+    "caption": "AC Gas Charging & Leakage Repair",
+    "timestamp": "2026-06-16T12:03:00.000Z"
+  },
+  {
+    "id": 5,
+    "path": "assets/tech.png",
+    "type": "image",
+    "caption": "Washing Machine & Fridge Repair",
+    "timestamp": "2026-06-16T12:04:00.000Z"
+  }
+]

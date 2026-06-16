@@ -598,7 +598,15 @@ footer {
 
     .hero-image {
         margin-top: 30px;
-        order: -1; /* Image first on mobile */
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .hero-image img {
+        height: 280px;
+        object-fit: cover;
+        object-position: center top; /* Crops out bottom phone camera watermark */
+        border-radius: 20px;
     }
 
     .grid, .gallery, .service-grid-compact {
@@ -607,6 +615,19 @@ footer {
 
     .gallery-item {
         height: 300px;
+    }
+
+    /* Mobile Touch-Friendly Captions */
+    .gallery-caption {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+        padding: 1rem;
+        font-size: 0.95rem;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.95);
     }
 
     .btn {
@@ -621,6 +642,19 @@ footer {
     
     footer h3 {
         font-size: 1.2rem;
+    }
+
+    .mobile-lang-li {
+        display: block;
+        width: 100%;
+        margin-top: 1.5rem;
+        list-style: none;
+    }
+
+    .mobile-lang-li .btn-lang {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 1.1rem;
     }
 }
 
@@ -639,4 +673,21 @@ footer {
     .hero-content h1 {
         font-size: 1.8rem;
     }
+}
+
+/* Base styles for mobile lang toggle list-item on desktop */
+.mobile-lang-li {
+    display: none;
+}
+
+/* Accessibility color contrast improvements for admin links */
+footer a, .container a[href="admin.html"] {
+    color: var(--light) !important;
+    opacity: 0.85 !important;
+    font-weight: bold;
+    text-decoration: underline !important;
+}
+
+.container a[href="admin.html"]:hover {
+    color: var(--accent) !important;
 }

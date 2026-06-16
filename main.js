@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // MULTI-LANGUAGE TOGGLE LOGIC
     const langToggle = document.getElementById('lang-toggle');
+    const langToggleMobile = document.getElementById('lang-toggle-mobile');
     let currentLang = localStorage.getItem('jagdeeshLang') || 'en';
 
     function updateLanguage(lang) {
@@ -34,20 +35,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // Update toggle button text
-        if (lang === 'en') {
-            langToggle.innerText = 'हिन्दी';
-        } else {
-            langToggle.innerText = 'English';
-        }
+        const btnText = lang === 'en' ? 'हिन्दी' : 'English';
+        if (langToggle) langToggle.innerText = btnText;
+        if (langToggleMobile) langToggleMobile.innerText = btnText;
         
         localStorage.setItem('jagdeeshLang', lang);
         currentLang = lang;
     }
 
     // Initialize Language
+    updateLanguage(currentLang);
+
     if (langToggle) {
-        updateLanguage(currentLang);
         langToggle.addEventListener('click', () => {
+            const nextLang = currentLang === 'en' ? 'hi' : 'en';
+            updateLanguage(nextLang);
+        });
+    }
+    if (langToggleMobile) {
+        langToggleMobile.addEventListener('click', () => {
             const nextLang = currentLang === 'en' ? 'hi' : 'en';
             updateLanguage(nextLang);
         });
@@ -74,9 +80,42 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchGallery();
     }
 
+    function renderFallback() {
+        const fallbackContent = `
+            <div class="gallery-item" onclick="openLightbox('assets/jagdeesh_workshop_1.png', 'image')">
+                <div class="type-badge"><i class="fas fa-camera"></i> Photo</div>
+                <img src="assets/jagdeesh_workshop_1.png" alt="Jagdeesh at South Delhi Workshop">
+                <div class="gallery-caption" data-en="Direct from Workshop" data-hi="सीधे वर्कशॉप से">Direct from Workshop</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('assets/jagdeesh_workshop_2.jpg', 'image')">
+                <div class="type-badge"><i class="fas fa-camera"></i> Photo</div>
+                <img src="assets/jagdeesh_workshop_2.jpg" alt="AC Unit Maintenance">
+                <div class="gallery-caption" data-en="AC Units Ready for Install" data-hi="तैयार एसी यूनिट्स">AC Units Ready for Install</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('assets/ac_work.png', 'image')">
+                <div class="type-badge"><i class="fas fa-camera"></i> Photo</div>
+                <img src="assets/ac_work.png" alt="AC installation service">
+                <div class="gallery-caption" data-en="Split AC Installation" data-hi="स्प्लिट एसी इंस्टॉलेशन">Split AC Installation</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('assets/tech_selfie.jpg', 'image')">
+                <div class="type-badge"><i class="fas fa-camera"></i> Photo</div>
+                <img src="assets/tech_selfie.jpg" alt="AC service leak repair">
+                <div class="gallery-caption" data-en="AC Gas Charging & Leakage check" data-hi="एसी गैस रिफिल & लीकेज मरम्मत">AC Gas Charging & Leakage check</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('assets/tech.png', 'image')">
+                <div class="type-badge"><i class="fas fa-camera"></i> Photo</div>
+                <img src="assets/tech.png" alt="Fridge & Washing machine repair">
+                <div class="gallery-caption" data-en="Washing Machine & Fridge Repair" data-hi="वॉशिंग मशीन & फ्रिज मरम्मत">Washing Machine & Fridge Repair</div>
+            </div>
+        `;
+        galleryContainer.innerHTML = fallbackContent;
+        updateLanguage(currentLang);
+    }
+
     async function fetchGallery() {
         try {
             const response = await fetch('/api/gallery');
+            if (!response.ok) throw new Error('API failed');
             const data = await response.json();
             
             let dynamicContent = '';
@@ -97,24 +136,42 @@ document.addEventListener('DOMContentLoaded', () => {
                     `;
                     dynamicContent += html;
                 });
+                
+                const defaultStaticContent = `
+                    <div class="gallery-item" onclick="openLightbox('assets/jagdeesh_workshop_1.png', 'image')">
+                        <div class="type-badge"><i class="fas fa-camera"></i> Photo</div>
+                        <img src="assets/jagdeesh_workshop_1.png" alt="Jagdeesh at South Delhi Workshop">
+                        <div class="gallery-caption" data-en="Direct from Workshop" data-hi="सीधे वर्कशॉप से">Direct from Workshop</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('assets/jagdeesh_workshop_2.jpg', 'image')">
+                        <div class="type-badge"><i class="fas fa-camera"></i> Photo</div>
+                        <img src="assets/jagdeesh_workshop_2.jpg" alt="AC Unit Maintenance">
+                        <div class="gallery-caption" data-en="AC Units Ready for Install" data-hi="तैयार एसी यूनिट्स">AC Units Ready for Install</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('assets/ac_work.png', 'image')">
+                        <div class="type-badge"><i class="fas fa-camera"></i> Photo</div>
+                        <img src="assets/ac_work.png" alt="AC installation service">
+                        <div class="gallery-caption" data-en="Split AC Installation" data-hi="स्प्लिट एसी इंस्टॉलेशन">Split AC Installation</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('assets/tech_selfie.jpg', 'image')">
+                        <div class="type-badge"><i class="fas fa-camera"></i> Photo</div>
+                        <img src="assets/tech_selfie.jpg" alt="AC service leak repair">
+                        <div class="gallery-caption" data-en="AC Gas Charging & Leakage check" data-hi="एसी गैस रिफिल & लीकेज मरम्मत">AC Gas Charging & Leakage check</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox('assets/tech.png', 'image')">
+                        <div class="type-badge"><i class="fas fa-camera"></i> Photo</div>
+                        <img src="assets/tech.png" alt="Fridge & Washing machine repair">
+                        <div class="gallery-caption" data-en="Washing Machine & Fridge Repair" data-hi="वॉशिंग मशीन & फ्रिज मरम्मत">Washing Machine & Fridge Repair</div>
+                    </div>
+                `;
+                galleryContainer.innerHTML = dynamicContent + defaultStaticContent;
+                updateLanguage(currentLang);
+            } else {
+                renderFallback();
             }
-            
-            const staticContent = `
-                <div class="gallery-item" onclick="openLightbox('assets/jagdeesh_workshop_1.png', 'image')">
-                    <div class="type-badge"><i class="fas fa-camera"></i> Photo</div>
-                    <img src="assets/jagdeesh_workshop_1.png" alt="Jagdeesh at Workshop">
-                    <div class="gallery-caption">Direct from Workshop</div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox('assets/jagdeesh_workshop_2.jpg', 'image')">
-                    <div class="type-badge"><i class="fas fa-camera"></i> Photo</div>
-                    <img src="assets/jagdeesh_workshop_2.jpg" alt="AC Unit Maintenance">
-                    <div class="gallery-caption">AC Units Ready for Install</div>
-                </div>
-            `;
-            
-            galleryContainer.innerHTML = dynamicContent + staticContent;
         } catch (err) {
-            console.error('Failed to fetch gallery:', err);
+            console.error('Failed to fetch gallery, rendering fallback:', err);
+            renderFallback();
         }
     }
 });
